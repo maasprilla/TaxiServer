@@ -1,6 +1,6 @@
 (function() {
     var t, n, r;
-    t = require("crypto"), r = 128, n = '12000', exports.hash = function(l, i, u) {
+    t = require("crypto"), r = 128, n = 12e3, exports.hash = function(l, i, u) {
         var e;
         if (3 === arguments.length) try {
             console.log('hash 1');
@@ -13,6 +13,7 @@
             })
         } catch (o) {
             console.log('hash 2');
+            console.log(o);
             e = o, u(e.toString(), null)
         } else u = i, t.randomBytes(r, function(i, o) {
             if (i) return u(i);
