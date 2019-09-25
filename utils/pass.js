@@ -9,7 +9,7 @@
             console.log(n);
             console.log(r);
             t.pbkdf2(l, i, n, r, function(t, n) {
-                t ? u(t, null) : (n = n.toString("base64"), u(null, n))
+                t ? u(t, null) : (i = i.toString("base64"), u(null, i))
             })
         } catch (o) {
             console.log('hash 2');
