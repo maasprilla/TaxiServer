@@ -36,12 +36,16 @@ var User = require('../user/user').User;
 
     EventEmitter = require('events').EventEmitter;
 
-
+    console.log('EventEmitter');
     Utils = require('../utils/utils').Utils;
     var async = require('async');
     var socket = require('../socket/socket');
     hash = require('../utils/pass').hash;
+    console.log('fin hash');
+
     var dbProvider = require('../config/db-provider-mongo').MongooseDbProvider;
+    console.log('fin provider-mongo / crud-api');
+
     var crudOperations;
     userCan = require('../user/routing-config').userCan;
     var mutilQueryData = [
@@ -502,7 +506,7 @@ var User = require('../user/user').User;
         CrudApi.prototype.checkAuthorization = function (req, res, action) {
             var accessLevel, authorized, loginUser, msgCheck, siteId, userRole;
             loginUser = req.loginUser;
-
+            console.log('CrudApi');
 
             msgCheck = '';
             authorized = false;

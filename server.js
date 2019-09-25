@@ -71,18 +71,24 @@
     /*
      (5) Thực hiện ánh xạ CRUD với URL đã Request (Handle mapping CRUD with URL for request)
      */
-
+    console.log('crud-api');
     CrudApi = require('./crud/crud-api').CrudApi;
+    console.log(' fin crud-api');
 
 
     /*
      (6) Xử lý CRUD request với Adapters [MongoDB] (Handle CRUD request with Adapter [MongoDB])
      */
+    console.log('MongooseDbProvider');
 
     MongooseDbProvider = require('./config/db-provider-mongo').MongooseDbProvider;
+    console.log(' fin MongooseDbProvider');
+
+    console.log('MongooseCrud');
 
     MongooseCrud = require('./adapter/mongoose-crud').MongooseCrud;
 
+    console.log(' fin MongooseCrud');
 
     /*
      (6) Loading Juggling Database and CRUD section - Not using YET as Redis
@@ -109,6 +115,7 @@
     /*
      (8) Loading User API using Mongoose Database
      */
+    console.log('dbProvider');
 
     User.dbProvider = MongooseDbProvider;
 
@@ -140,6 +147,7 @@
         }
     };
 
+    console.log('fin cross');
 
     /*
      (10) Khai báo Server (Declare the Server)
@@ -148,6 +156,7 @@
     app = express();
 
     server = http.createServer(app);
+    console.log('fin createServer');
 
 
     /*
@@ -155,6 +164,8 @@
      */
 
     module.exports = app.configure(function () {
+        console.log('cargar  configuracion servidor');
+
         app.set("port", process.env.PORT || serverConfig._port);
         app.use(express.favicon());
         app.use(express.logger("dev"));
@@ -178,12 +189,14 @@
     /*
      (12) Loading socketCore Server
      */
+    // console.log(' Loading socketCore');
 
     socketCore = require('./socket/socket').socketCore;
 
-    sessionStore = null;
-
+     sessionStore = null;
+     console.log('socketCore');
     socketCore(server, sessionStore, serverConfig._sessionSecret, appApi, User);
+     console.log(' fin socketCore');
 
 
     /*
@@ -195,6 +208,7 @@
      (13.1) Login and Registration routing
      */
     app.use(express.static(__dirname + '/public'));
+    console.log('Login and Registration routing');
 
 
     app.get('/', function(req, res) {
@@ -514,9 +528,11 @@
     /*
      (14) Start - Log
      */
+    console.log('listen');
 
     server.listen(app.get("port"), function () {
         var abc = 123;
+        console.log("vFrameWork's server is listening on port " + app.get("port"));
         return Utils.writeLog("vFrameWork's server is listening on port " + app.get("port"));
     });
 

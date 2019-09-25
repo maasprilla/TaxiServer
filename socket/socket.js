@@ -15,12 +15,16 @@
 
 
     socketCore = function (httpServer, _sessionStore, _sessionSecret, appApi, User) {
+        console.log('inicio socket');
+
         var crudSocket, io, logger, loggerSocket, socketClientList = {}, client = {}, rooms = {};
 
-        io = socketio.listen(httpServer, {
-            'transports': ['xhr-polling', 'polling', 'websocket', 'flashsocket'],
-            'origins': '*:*'
-        });
+        // io = socketio.listen(httpServer, {
+        //     'transports': ['xhr-polling', 'polling', 'websocket', 'flashsocket'],
+        //     'origins': '*:*'
+        // });
+        io = socketio.listen(httpServer);
+        console.log('fin escucha  socketio');
 
         // SOCKET IO Log Level
 //        io.set('log level', 0);
