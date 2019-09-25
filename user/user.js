@@ -680,6 +680,10 @@
                 callback(null, user);
             } else {
                 console.log('no');
+                User.dbProvider.Managers.find(function (err, user) {
+                    console.log(err);
+                    console.log(user);
+                });
                 async.waterfall([
                     function (cb) {
 
