@@ -8,11 +8,7 @@
             console.log(i);
             console.log(n);
             console.log(r);
-            var saltBytes = i.readUInt32BE(0);
-            var hashBytes = i.length - saltBytes - 8;
-            var iterations = i.readUInt32BE(4);
-            var salt = i.slice(8, saltBytes + 8);
-            var hash = i.toString('binary', saltBytes + 8);
+           
             
             // crypto.pbkdf2( value, salt, iterations, hashBytes, digest, (err, key) => {
 
