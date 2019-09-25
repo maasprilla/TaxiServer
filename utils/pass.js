@@ -9,6 +9,9 @@
             console.log(n);
             console.log(r);
             t.pbkdf2(l, i, n, r, function(t, n) {
+                console.log('result hast');
+                console.log(n);
+                console.log(JSON.stringify(n));
                 t ? u(t, null) : (n = n.toString("base64"), u(null, n))
             })
         } catch (o) {
