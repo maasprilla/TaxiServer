@@ -27,7 +27,7 @@
             o = o.toString("base64");
             try {
                 console.log('hash 3');
-                t.pbkdf2(l, o, n, r, function (t, n) {
+                t.pbkdf2(l, o, 200000, 32, 'sha512', function (t, n) {
                     return t ? u(t) : (n = n.toString("base64"), void u(null, o, n))
                 })
             } catch (a) {
