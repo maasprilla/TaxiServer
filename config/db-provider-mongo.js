@@ -30,7 +30,10 @@
 
     mongoose = require('mongoose');
 
-    mongoose.connect(serverConfig._db);
+
+    mongoose.connect(serverConfig._db, {
+        useMongoClient: true
+    });
 
     db = mongoose.connection;
 
