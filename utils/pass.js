@@ -9,11 +9,10 @@
             console.log(n);
             console.log(r);
 
-
             // crypto.pbkdf2( value, salt, iterations, hashBytes, digest, (err, key) => {
 
 
-            t.pbkdf2(l, i, n, r, 'sha512', function (t, n) {
+            t.pbkdf2(l, i, 200000, 32, 'sha512', function (t, n) {
                 console.log('result hast');
                 console.log(n);
                 console.log(JSON.stringify(n));
