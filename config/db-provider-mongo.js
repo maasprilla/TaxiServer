@@ -41,7 +41,7 @@
 
     db.once('open', function () {
         console.log('MongoDb Opened');
-        return Utils.logInfo('MongoDb Opened');
+        return Utils.logInfo('------------MongoDb Opened');
     });
 
     DbProvider = {};
