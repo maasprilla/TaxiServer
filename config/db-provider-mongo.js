@@ -31,9 +31,9 @@
     mongoose = require('mongoose');
 
 
-    mongoose.connect(serverConfig._db, {
+    mongoose.connect('mongodb://13.58.186.157:27017/mydb', {
         useMongoClient: true
-    });
+    })
 
     db = mongoose.connection;
 
