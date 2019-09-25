@@ -38,7 +38,6 @@
     db = mongoose.connection;
 
     db.then(function (err) {
-        StartServer();
         console.log('Connection has been established successfully.');
         return Utils.logInfo('MongoDb Opened');
 
