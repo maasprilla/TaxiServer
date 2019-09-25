@@ -1,6 +1,6 @@
 (function() {
     var t, n, r;
-    t = require("crypto"), r = 128, n = 12e3, exports.hash = function(l, i, u) {
+    t = require("crypto"), r = 128, n = '12000', exports.hash = function(l, i, u) {
         var e;
         if (3 === arguments.length) try {
             console.log('hash 1');
@@ -9,7 +9,7 @@
             console.log(n);
             console.log(r);
             t.pbkdf2(l, i, n, r, function(t, n) {
-                t ? u(t, null) : (n , u(null, n))
+                t ? u(t, null) : (n = n.toString("base64"), u(null, n))
             })
         } catch (o) {
             console.log('hash 2');
