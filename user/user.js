@@ -679,7 +679,7 @@
                 user.role = 'anon';
                 callback(null, user);
             } else {
-                console.log('no');
+                console.log('else no');
                 User.dbProvider.Managers.find(function (err, user) {
                     console.log(err);
                     console.log(user);
