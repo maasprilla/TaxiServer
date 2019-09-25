@@ -31,25 +31,18 @@
     mongoose = require('mongoose');
 
 
-    db = mongoose.connect(serverConfig._db, {
+    mongoose.connect(serverConfig._db, {
         useMongoClient: true
     });
 
-    db.then(function(err) {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(function (err) {
-    console.log('Unable to connect to the database:', err);
-  });
+    db = mongoose.connection;
 
-    // db = mongoose.connection;
+    db.on('error', console.error.bind(console, 'connection error:'));
 
-    // db.on('error', console.error.bind(console, 'connection error:'));
-
-    // db.once('open', function () {
-    //     console.log('MongoDb Opened');
-    //     return Utils.logInfo('------------MongoDb Opened');
-    // });
+    db.once('open', function () {
+        console.log('------------MongoDb Opened');
+        return Utils.logInfo('MongoDb Opened');
+    });
 
     DbProvider = {};
 
