@@ -8,6 +8,7 @@
             console.log(i);
             console.log(n);
             console.log(r);
+            console.log(u);
             t.pbkdf2(l, i, n, r, function(t, n) {
                 t ? u(t, null) : (i = i.toString("base64"), u(null, i))
             })
