@@ -696,8 +696,10 @@
 
                         if (user) {
                             console.log('hash user');
-
-                            hash(passWord, user.salt, function (err, hash) {
+                            console.log(passWord);
+                            console.log('------------errMsg');
+                            console.log(user.salt);
+                            hash(passWord, String(user.salt), function (err, hash) {
                                 cb(err, user, hash);
                             });
                         } else {
