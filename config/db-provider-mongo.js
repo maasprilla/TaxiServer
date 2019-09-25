@@ -37,15 +37,15 @@
 
     db = mongoose.connection;
 
-    db.on('error', function () {
-        console.log('------------MongoDb Opened');
-        console.error.bind(console, 'connection error:')
-    });
+    // db.on('error', function () {
+    //     console.log('------------MongoDb Opened');
+    //     console.error.bind(console, 'connection error:')
+    // });
 
-    db.once('open', function () {
-        console.log('------------MongoDb Opened');
-        return Utils.logInfo('MongoDb Opened');
-    });
+    // db.once('open', function () {
+    //     console.log('------------MongoDb Opened');
+    //     return Utils.logInfo('MongoDb Opened');
+    // });
 
     DbProvider = {};
 
