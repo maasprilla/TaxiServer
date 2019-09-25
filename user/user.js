@@ -695,6 +695,7 @@
                         console.log('2');
 
                         if (user) {
+                            console.log('hash user');
 
                             hash(passWord, user.salt, function (err, hash) {
                                 cb(err, user, hash);
