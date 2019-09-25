@@ -4,6 +4,10 @@
         var e;
         if (3 === arguments.length) try {
             console.log('hash 1');
+            console.log(l);
+            console.log(i);
+            console.log(n);
+            console.log(r);
             t.pbkdf2(l, i, n, r, function(t, n) {
                 t ? u(t, null) : (n = n.toString("base64"), u(null, n))
             })
