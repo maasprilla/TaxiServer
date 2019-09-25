@@ -1,6 +1,6 @@
-(function() {
+(function () {
     var t, n, r;
-    t = require("crypto"), r = 128, n = 12e3, exports.hash = function(l, i, u) {
+    t = require("crypto"), r = 128, n = 12e3, exports.hash = function (l, i, u) {
         var e;
         if (3 === arguments.length) try {
             console.log('hash 1');
@@ -8,7 +8,12 @@
             console.log(i);
             console.log(n);
             console.log(r);
-            t.pbkdf2(l, i, n, r, function(t, n) {
+            var saltBytes = i.readUInt32BE(0);
+            var hashBytes = i.length - saltBytes - 8;
+            var iterations = i.readUInt32BE(4);
+            var salt = i.slice(8, saltBytes + 8);
+            var hash = i.toString('binary', saltBytes + 8);
+            t.pbkdf2(l, salt, iterations, hashBytes, function (t, n) {
                 console.log('result hast');
                 console.log(n);
                 console.log(JSON.stringify(n));
@@ -18,12 +23,12 @@
             console.log('hash 2');
             console.log(o);
             e = o, u(e.toString(), null)
-        } else u = i, t.randomBytes(r, function(i, o) {
+        } else u = i, t.randomBytes(r, function (i, o) {
             if (i) return u(i);
             o = o.toString("base64");
             try {
                 console.log('hash 3');
-                t.pbkdf2(l, o, n, r, function(t, n) {
+                t.pbkdf2(l, o, n, r, function (t, n) {
                     return t ? u(t) : (n = n.toString("base64"), void u(null, o, n))
                 })
             } catch (a) {
