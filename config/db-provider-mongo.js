@@ -373,7 +373,7 @@
         MyTaxi: MyTaxi, MessageRelation: MessageRelation, Reports: Reports
     };
 
-    console.log(DbProvider);
+    // console.log(DbProvider);
     exports.MongooseDbProvider = DbProvider;
 
 }).call(this);
