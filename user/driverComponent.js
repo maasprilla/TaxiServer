@@ -36,6 +36,7 @@
         passReqToCallback: true
     }, function (req, username, password, done) {
         console.log('managerStrategy');
+        console.log('entro');
         var siteId;
         siteId = req.body.siteId || '0';
         Driver.managerLogin(siteId, username, password, done);

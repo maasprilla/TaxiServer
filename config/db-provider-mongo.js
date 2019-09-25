@@ -51,16 +51,16 @@
      * */
 
     userSchema = mongoose.Schema({
-        deviceId: {type: String, index: true},
-        username: {type: String, required: true, default: 'anon'},
-        fullname: {type: String, index: true},
-        phone: {type: String},
-        birthday: {type: Date},
-        location: {type: String},
-        avatar: {type: String},
-        salt: {type: String, required: true },
-        hash: {type: String, required: true},
-        role: {type: String, required: true, "default": 'user'}
+        deviceId: { type: String, index: true },
+        username: { type: String, required: true, default: 'anon' },
+        fullname: { type: String, index: true },
+        phone: { type: String },
+        birthday: { type: Date },
+        location: { type: String },
+        avatar: { type: String },
+        salt: { type: String, required: true },
+        hash: { type: String, required: true },
+        role: { type: String, required: true, "default": 'user' }
     }, {
         toObject: {
             virtuals: true
@@ -82,21 +82,21 @@
     Users = mongoose.model('Users', userSchema);
 
     driverSchema = mongoose.Schema({
-        deviceId: {type: String},
-        username: {type: String, required: true},
-        fullname: {type: String, index: true},
-        birthday: {type: Date},
-        avatar: {type: String, required: false},
-        bio: {type: String},
-        location: {type: String},
-        like: {type: Number, default: 0},
-        phone: {type: String},
-        company: {type: ObjectId, ref: 'TaxiCompany'},
-        type: {type: ObjectId, ref: 'DriverTypes'},
-        salt: {type: String, required: true },
-        hash: {type: String, required: true},
-        role: {type: String, required: true, "default": 'taxi'},
-        isDestroy: {type: String, default: 'false'}
+        deviceId: { type: String },
+        username: { type: String, required: true },
+        fullname: { type: String, index: true },
+        birthday: { type: Date },
+        avatar: { type: String, required: false },
+        bio: { type: String },
+        location: { type: String },
+        like: { type: Number, default: 0 },
+        phone: { type: String },
+        company: { type: ObjectId, ref: 'TaxiCompany' },
+        type: { type: ObjectId, ref: 'DriverTypes' },
+        salt: { type: String, required: true },
+        hash: { type: String, required: true },
+        role: { type: String, required: true, "default": 'taxi' },
+        isDestroy: { type: String, default: 'false' }
     }, {
         toObject: {
             virtuals: true
@@ -117,17 +117,17 @@
 
 
     var driverTypeSchema = mongoose.Schema({
-        company: {type: ObjectId, ref: 'TaxiCompany'},
-        typeCode: {type: String, require: true},
-        seatNum: {type: Number, require: true, default: 4},
-        color: {type: String, require: true},
-        carMarker: {type: String, require: true},
-        firstKm: {type: Number, require: true},
-        middleKm: {type: Number, require: true},
-        lastKm: {type: Number, require: true},
-        firstPrice: {type: Number, require: true},
-        middlePrice: {type: Number, require: true},
-        lastPrice: {type: Number, require: true}
+        company: { type: ObjectId, ref: 'TaxiCompany' },
+        typeCode: { type: String, require: true },
+        seatNum: { type: Number, require: true, default: 4 },
+        color: { type: String, require: true },
+        carMarker: { type: String, require: true },
+        firstKm: { type: Number, require: true },
+        middleKm: { type: Number, require: true },
+        lastKm: { type: Number, require: true },
+        firstPrice: { type: Number, require: true },
+        middlePrice: { type: Number, require: true },
+        lastPrice: { type: Number, require: true }
     }, {
         toObject: {
             virtuals: true
@@ -141,12 +141,12 @@
 
 
     taxiCompanySchema = mongoose.Schema({
-        companyName: {type: String, required: true},
-        logo: {type: String, required: true},
-        address: {type: String, required: true},
-        hotline: {type: String, required: true},
-        fax: {type: String},
-        description: {type: String}
+        companyName: { type: String, required: true },
+        logo: { type: String, required: true },
+        address: { type: String, required: true },
+        hotline: { type: String, required: true },
+        fax: { type: String },
+        description: { type: String }
     }, {
         toObject: {
             virtuals: true
@@ -161,13 +161,13 @@
 
     var managerSchema = mongoose.Schema({
 
-        username: {type: String, required: true},
-        fullname: {type: String, index: true},
+        username: { type: String, required: true },
+        fullname: { type: String, index: true },
         /*company: {type: ObjectId, ref: 'TaxiCompany'},*/
-        avatar: {type: String, index: true},
-        salt: {type: String, required: true },
-        hash: {type: String, required: true},
-        role: {type: String, required: true, "default": 'manager'}
+        avatar: { type: String, index: true },
+        salt: { type: String, required: true },
+        hash: { type: String, required: true },
+        role: { type: String, required: true, "default": 'manager' }
     }, {
         toObject: {
             virtuals: true
@@ -180,20 +180,20 @@
     var Managers = mongoose.model('Managers', managerSchema);
 
     routeHistorySchema = mongoose.Schema({
-        customer: {type: ObjectId, require: true, ref: 'Users'},
-        driver: {type: ObjectId, required: true, ref: 'Drivers'},
-        startPoint: {type: String, required: true},
-        endPoint: {type: String, require: true},
-        duration: {type: String, default: 0},
-        distance: {type: String, default: 0},
-        startAt: {type: Date, default: Date.now},
-        endAt: {type: Date, default: new Date()},
-        amount: {type: String, default: 0},
-        deleteReason: {type: String},
-        status: {type: Number, default: 0},
-        roomID: {type: String, require: true},
-        destroyBy: {type: ObjectId, ref: 'Managers'},
-        destroyed: {type: Boolean, default: false}
+        customer: { type: ObjectId, require: true, ref: 'Users' },
+        driver: { type: ObjectId, required: true, ref: 'Drivers' },
+        startPoint: { type: String, required: true },
+        endPoint: { type: String, require: true },
+        duration: { type: String, default: 0 },
+        distance: { type: String, default: 0 },
+        startAt: { type: Date, default: Date.now },
+        endAt: { type: Date, default: new Date() },
+        amount: { type: String, default: 0 },
+        deleteReason: { type: String },
+        status: { type: Number, default: 0 },
+        roomID: { type: String, require: true },
+        destroyBy: { type: ObjectId, ref: 'Managers' },
+        destroyed: { type: Boolean, default: false }
     }, {
         toObject: {
             virtuals: true
@@ -215,13 +215,13 @@
 
 
     messageSchema = mongoose.Schema({
-        from: {type: ObjectId, ref: 'TaxiCompany'},
-        to: {type: ObjectId, ref: 'Users', require: true},
-        title: {type: String, require: true},
-        body: {type: String, require: true},
-        status: {type: Number, default: 0},
-        isSystem: {type: Number, default: 0},
-        time: {type: Date, default: new Date()}
+        from: { type: ObjectId, ref: 'TaxiCompany' },
+        to: { type: ObjectId, ref: 'Users', require: true },
+        title: { type: String, require: true },
+        body: { type: String, require: true },
+        status: { type: Number, default: 0 },
+        isSystem: { type: Number, default: 0 },
+        time: { type: Date, default: new Date() }
     }, {
         toObject: {
             virtuals: true
@@ -242,10 +242,10 @@
     Messages = mongoose.model('Messages', messageSchema);
 
     var messageRelationSchema = mongoose.Schema({
-        message: {type: ObjectId, ref: 'Messages'},
-        user: {type: ObjectId, ref: 'Users'},
-        readed: {type: Number, default: 0},
-        deleted: {type: Number, default: 0}
+        message: { type: ObjectId, ref: 'Messages' },
+        user: { type: ObjectId, ref: 'Users' },
+        readed: { type: Number, default: 0 },
+        deleted: { type: Number, default: 0 }
     }, {
         toObject: {
             virtuals: true
@@ -265,9 +265,9 @@
     var MessageRelation = mongoose.model('MessageRelation', messageRelationSchema);
 
     var myTaxiSchema = mongoose.Schema({
-        driver: {type: ObjectId, ref: 'Drivers', require: true},
-        customer: {type: ObjectId, ref: 'Users', require: true},
-        time: {type: Date, default: Date.now}
+        driver: { type: ObjectId, ref: 'Drivers', require: true },
+        customer: { type: ObjectId, ref: 'Users', require: true },
+        time: { type: Date, default: Date.now }
     }, {
         toObject: {
             virtuals: true
@@ -287,12 +287,12 @@
 
 
     var reportSchema = mongoose.Schema({
-        user: {type: ObjectId, ref: 'Users'},
-        driver: {type: ObjectId, ref: 'Drivers'},
-        content: {type: String, required: true},
-        route: {type: ObjectId, ref: 'RouteHistories', required: true},
+        user: { type: ObjectId, ref: 'Users' },
+        driver: { type: ObjectId, ref: 'Drivers' },
+        content: { type: String, required: true },
+        route: { type: ObjectId, ref: 'RouteHistories', required: true },
 
-        time: {type: Date, require: true, default: new Date()}
+        time: { type: Date, require: true, default: new Date() }
     }, {
         toObject: {
             virtuals: true
@@ -305,9 +305,9 @@
     var Reports = mongoose.model('Reports', reportSchema);
 
     bookmarkSchema = mongoose.Schema({
-        customer: {type: ObjectId, ref: 'Customers'},
-        bookmarkPoint: {type: String, require: true},
-        bookmarkAt: {type: Date, require: true, default: new Date()}
+        customer: { type: ObjectId, ref: 'Customers' },
+        bookmarkPoint: { type: String, require: true },
+        bookmarkAt: { type: Date, require: true, default: new Date() }
 
     }, {
         toObject: {
@@ -322,9 +322,9 @@
 
 
     likeSchema = mongoose.Schema({
-        customer: {type: ObjectId},
-        driver: {type: ObjectId, ref: 'Drivers'},
-        time: {type: Date, default: new Date()}
+        customer: { type: ObjectId },
+        driver: { type: ObjectId, ref: 'Drivers' },
+        time: { type: Date, default: new Date() }
     }, {
         toObject: {
             virtuals: true
@@ -358,8 +358,13 @@
     DbProvider.MyTaxi = MyTaxi;
     DbProvider.MessageRelation = MessageRelation;
     DbProvider.Reports = Reports;
+    DbProvider = {
+        Users: Users, Drivers: Drivers, DriverTypes: DriverTypes, TaxiCompany: TaxiCompany,
+        RouteHistories: RouteHistories, Messages: Messages, Bookmarks: Bookmarks, Likes: Likes, Managers: Managers,
+        MyTaxi: MyTaxi, MessageRelation: MessageRelation, Reports: Reports
+    };
 
-
+    console.log(DbProvider);
     exports.MongooseDbProvider = DbProvider;
 
 }).call(this);

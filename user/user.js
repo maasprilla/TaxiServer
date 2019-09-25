@@ -20,7 +20,7 @@
         function User() {
         }
 
-        User.dbProvider = null;
+        User.dbProvider = require('../config/db-provider-mongo').MongooseDbProvider;
 
         User.cacheTokens = [];
 
@@ -275,9 +275,11 @@
 
 
         User.managerAuthenticateSuccess = function (req, res) {
+            console.log('managerAuthenticateSuccess');
             var client_ip, expired_date, token, user;
             expired_date = new Date();
             expired_date.setMinutes(expired_date.getMinutes() + 6 * 60);
+            console.log('client_ip');
             client_ip = Utils.getClientIp(req);
             user = {};
             user.site = req.user.site;
@@ -291,7 +293,7 @@
             token = jwt.encode(user, serverConfig._tokenScrete);
 
             //console.log('authenticateSucess', 'cacheTokens', user, req.user);
-
+            console.log(token);
             User.cacheTokens.push(token);
 
             res.send({
@@ -666,8 +668,9 @@
             console.log(userName, passWord);
             var user;
             Utils.logInfo('Authenticating Manager starting...');
-
+            console.log('Authenticating Manager starting...');
             if (userName === 'anon') {
+                console.log('si');
                 user = {};
                 user.site = siteId;
                 user.id = '0';
@@ -676,13 +679,21 @@
                 user.role = 'anon';
                 callback(null, user);
             } else {
+                console.log('no');
                 async.waterfall([
                     function (cb) {
+
+                        console.log('waterfall');
+                        User.dbProvider.Managers
                         User.dbProvider.Managers.findOne({username: userName}, function (err, user) {
+                            console.log(err);
+                            console.log(user);
                             cb(err, user);
                         });
                     }, function (user, cb) {
                         var errMsg;
+                        console.log('2');
+
                         if (user) {
 
                             hash(passWord, user.salt, function (err, hash) {
@@ -690,23 +701,29 @@
                             });
                         } else {
                             errMsg = 'LOGIN.ERROR.USERNAME';
+                            console.log(errMsg);
                             cb(errMsg, null);
                             Utils.logInfo('Authenticating', 'error', errMsg);
                         }
                     }, function (user, hash, cb) {
+                        console.log('3');
+
                         var errMsg;
                         if (hash === user.hash) {
                             user.password = passWord;
                             cb(null, user);
                         } else {
                             errMsg = 'LOGIN.ERROR.PASSWORD';
+                            console.log(errMsg);
                             cb(errMsg, null);
                         }
                     }
                 ], function (error, result) {
+                    console.log('error waterfall');
                     callback(error, result);
                 });
             }
+            console.log('fin waterfall');
         };
 
 
