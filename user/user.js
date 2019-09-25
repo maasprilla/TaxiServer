@@ -684,7 +684,6 @@
                     function (cb) {
 
                         console.log('waterfall');
-                        User.dbProvider.Managers
                         User.dbProvider.Managers.findOne({username: userName}, function (err, user) {
                             console.log(err);
                             console.log(user);
