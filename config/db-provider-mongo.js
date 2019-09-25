@@ -179,6 +179,11 @@
 
     var Managers = mongoose.model('Managers', managerSchema);
 
+    Managers.find(function (err, user) {
+        console.log(err);
+        console.log(user);
+    });
+
     routeHistorySchema = mongoose.Schema({
         customer: { type: ObjectId, require: true, ref: 'Users' },
         driver: { type: ObjectId, required: true, ref: 'Drivers' },
