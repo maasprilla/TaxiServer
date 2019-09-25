@@ -37,6 +37,15 @@
 
     db = mongoose.connection;
 
+    db.then(function (err) {
+        StartServer();
+        console.log('Connection has been established successfully.');
+        return Utils.logInfo('MongoDb Opened');
+
+    }).catch(function (err) {
+        console.log('Unable to connect to the database:', err);
+    });
+
     // db.on('error', function () {
     //     console.log('------------MongoDb Opened');
     //     console.error.bind(console, 'connection error:')
